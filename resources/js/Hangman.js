@@ -93,6 +93,14 @@ class Hangman {
   checkWin() {
     // using the word and the guesses array, figure out how many remaining unknowns.
     // if zero, set both didWin, and isOver to true
+    let unknownLetter =
+      this.word.split('').filter(words => !this.guess(includes(words))).length;
+    console.log(unknownLetter);
+
+    if (unknownLetter == 0){
+      this.didWin = true;
+      this.isOver = true;
+    }
   }
 
   /**
@@ -100,7 +108,30 @@ class Hangman {
    * drawHead, drawBody, drawRightArm, drawLeftArm, drawRightLeg, or drawLeftLeg.
    * if the number wrong guesses is 6, then also set isOver to true and didWin to false.
    */
-  onWrongGuess() {}
+  onWrongGuess() {
+    const wrongGuess = this.guess.filter(letter => !this.word.includes(letter)).length;
+
+    if(wrongGuess == 1){
+      this.drawHead();
+    }
+    if(wrongGuess == 2){
+      this.drawBody();
+    }
+    if(wrongGuess == 3){
+      this.drawRightArm();
+    }
+    if(wrongGuess == 4){
+      this.drawLeftArm();
+    }
+    if(wrongGuess == 5){
+      this.drawRightLeg();
+    }
+    if(wrongGuess == 6){
+      this.drawLeftLeg();
+      this.isOver = true;
+      this.didWin = false;
+    }
+  }
 
   /**
    * This function will return a string of the word placeholder
@@ -108,7 +139,9 @@ class Hangman {
    * i.e.: if the word is BOOK, and the letter O has been guessed, this would return _ O O _
    */
   getWordHolderText() {
-    return;
+    return this.word.split('')
+    .map(letter => this.guess.includes(letter) ? letter : "_")
+    .join();
   }
 
   /**
@@ -118,7 +151,7 @@ class Hangman {
    * Hint: use the Array.prototype.join method.
    */
   getGuessesText() {
-    return ``;
+    return `Guesses: ${this.guess.join(', ')}`;
   }
 
   /**
