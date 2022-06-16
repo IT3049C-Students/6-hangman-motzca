@@ -31,12 +31,20 @@ class Hangman {
    * @param {function} next callback function to be called after a word is reveived from the API.
    */
   start(difficulty, next) {
-    // get word and set it to the class's this.word
-    // clear canvas
-    // draw base
-    // reset this.guesses to empty array
-    // reset this.isOver to false
-    // reset this.didWin to false
+    // gets the word
+    this.word = await this.getRandomWord(difficulty);
+  
+    this.clearCanvas();
+    this.drawBase();
+
+    // rests the guesses
+    this.guess = [];
+    //resets the .isOver
+    this.isOver = false;
+    //resets .didWin
+    this.didWin = false;
+
+    next;
   }
 
   /**
@@ -44,15 +52,42 @@ class Hangman {
    * @param {string} letter the guessed letter.
    */
   guess(letter) {
-    // Check if nothing was provided and throw an error if so
+    this.letter = letter;
+    // Checks if nothing was provided and throw an error if so
+    if (letter == null){
+      console.error("Please fill in a letter");
+    }
     // Check for invalid cases (numbers, symbols, ...) throw an error if it is
+    if (letter.length !== 1 && letter.match(/[a-z]/)){
+      console.error("Please make sure you are entering a letter")
+    }
     // Check if more than one letter was provided. throw an error if it is.
+    if(letter.length !== 1){
+      console.error("Please enter one letter at a time");
+    }
     // if it's a letter, convert it to lower case for consistency.
+    if (letter.length === 1 && letter.match(/[a-z]/)){
+      return letter.toLocaleLowerCase();
+    }
     // check if this.guesses includes the letter. Throw an error if it has been guessed already.
     // add the new letter to the guesses array.
+    if(this.guess.includes(letter)){
+      this.guess.push(letter);
+    }
+    else{
+      throw new Error("You already guessed this letter. Try again.");
+    }
     // check if the word includes the guessed letter:
     //    if it's is call checkWin()
     //    if it's not call onWrongGuess()
+    if(this.word.includes(letter)){
+      this.checkWin();
+    }
+    else{
+      this.onWrongGuess();
+    }
+
+    
   }
 
   checkWin() {
