@@ -18,6 +18,13 @@ const resetGame = document.getElementById(`resetGame`);
 // CANVAS
 let canvas = document.getElementById(`hangmanCanvas`);
 
+function callbackGame(){
+  startWrapper.classList.add('hidden');
+  gameWrapper.classList.remove('hidden');
+  wordHolderText.innerHTML = game.getWordHolderText();
+  guessesText.innerHTML = game.getGuessesText();
+}
+
 // The following Try-Catch Block will catch the errors thrown
 try {
   // Instantiate a game Object using the Hangman class.
@@ -29,7 +36,15 @@ try {
   //       2. show the gameWrapper
   //       3. call the game getWordHolderText and set it to the wordHolderText
   //       4. call the game getGuessessText and set it to the guessesText
-  difficultySelectForm.addEventListener(`submit`, function (event) {});
+  difficultySelectForm.addEventListener(`submit`, function (event) {
+    
+    difficultySelect.options[difficultySelect.selectedIndex].value;
+    gameWrapper.start(diff.toLowerCase(), function next() {
+      callbackGame();
+    });
+    next();
+    
+  });
 
   // add a submit Event Listener to the guessForm
   //    get the guess input
@@ -44,12 +59,18 @@ try {
   //      2. disable the guessButton
   //      3. show the resetGame button
   // if the game is won or lost, show an alert.
-  guessForm.addEventListener(`submit`, function (e) {});
+  guessForm.addEventListener(`submit`, function (e) {
+    guessForm.options[guessInput.selectedIndex].value;
+   
+  });
 
   // add a click Event Listener to the resetGame button
   //    show the startWrapper
   //    hide the gameWrapper
-  resetGame.addEventListener(`click`, function (e) {});
+  resetGame.addEventListener(`click`, function (e) {
+    startWrapper.callList.remove('hidden');
+    gameWrapper.callList.add('hidden');
+  });
 } catch (error) {
   console.error(error);
   alert(error);

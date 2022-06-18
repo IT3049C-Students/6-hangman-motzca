@@ -208,4 +208,6 @@ class Hangman {
     this.ctx.lineTo(330, 250);
     this.ctx.stroke();
   }
+
+  
 }
