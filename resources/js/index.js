@@ -60,8 +60,21 @@ try {
   //      3. show the resetGame button
   // if the game is won or lost, show an alert.
   guessForm.addEventListener(`submit`, function (e) {
-    guessForm.options[guessInput.selectedIndex].value;
-   
+    e.preventDefault();
+
+    const newGuess = guessInput.value;
+    game.guess(guessInput.value);
+    guessInput.value = '';
+
+    if (this.isOver == true)
+    {
+     this.guessInput.disabled = true;
+     document.getElementById("guessSubmitButton").disabled = true;
+     resetGame.style.display = "block";
+    } 
+    else{
+      return;}
+
   });
 
   // add a click Event Listener to the resetGame button
