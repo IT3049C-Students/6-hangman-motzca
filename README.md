@@ -1,6 +1,6 @@
 Hangman
 =====================
-[![Assignment Checks](https://github.com/IT3049C/Hangman/actions/workflows/classroom.yml/badge.svg)](https://github.com/IT3049C/Hangman/actions/workflows/classroom.yml)
+[![Assignment Checks](https://github.com/IT3049C-Students/6-hangman-motzca/actions/workflows/classroom.yml/badge.svg)](https://github.com/IT3049C-Students/6-hangman-motzca/actions/workflows/classroom.yml)
 
 Instructions to this assignment can be found [here](#).
 
@@ -14,7 +14,7 @@ Instructions to this assignment can be found [here](#).
 
 how many points out of 20 do you deserve on this assignment:
 
-I think at a minimum I should get 10/20. It took me awhile to get everything down as well as fully understand what needed to be added to the code. I wasn't able to figure out what was causing my code to not work, however.
+I think at a minimum I should get 15/20. It took me awhile to get everything down as well as fully understand what needed to be added to the code. All of the tests passed.
 
 ## Self-Reflection:
 

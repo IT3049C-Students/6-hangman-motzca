@@ -32,7 +32,7 @@ class Hangman {
    */
   start(difficulty, next) {
     // gets the word
-    this.word = await this.getRandomWord(difficulty);
+    this.word = this.getRandomWord(difficulty);
   
     this.clearCanvas();
     this.drawBase();
